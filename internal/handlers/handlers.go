@@ -8,10 +8,14 @@ import (
 )
 
 func Start(c telebot.Context) error {
-	greeting := "Привет, меня зовут pingponger! 🚀 Выбери одну из комманд ниже, чтобы узнать, как я работаю."
+	greeting := "< Привет, меня зовут pingponger! Я выполняю простые комманды и являюсь учебным проектом. >"
+	author := "| Мой создатель: @xoticdsign"
+	suggestion := "Выбери одну из комманд ниже, чтобы узнать, как я работаю!"
 
 	toSend := []string{
 		greeting,
+		author,
+		suggestion,
 	}
 
 	var cmdsSlice []string
@@ -19,9 +23,6 @@ func Start(c telebot.Context) error {
 	cmds, _ := c.Bot().Commands()
 
 	for _, cmd := range cmds {
-		if cmd.Text == "start" {
-			continue
-		}
 		cmdStr := fmt.Sprintf("/%v - %v", cmd.Text, cmd.Description)
 		cmdsSlice = append(cmdsSlice, cmdStr)
 	}
